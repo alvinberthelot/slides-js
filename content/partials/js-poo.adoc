@@ -1,0 +1,184 @@
+== La programmation orientée objet
+
+<<<
+
+=== Héritage prototypal
+
+*_Rappel_* +
+En JavaScript, un objet peut être "dérivé" d'un autre avec la propriété +\_++_++proto++\_++_+. Ce dernier est alors considéré comme son prototype.
+
+```js
+// prototype
+var animal = {
+  "name": 'Grumpy',
+  "age": 3,
+  "male": true
+};
+
+var cat = {};
+cat.__proto__ = animal;
+
+console.log('My cat ' + cat.name + ' is ' + cat.age + ' years old.');
+```
+
+<<<
+
+=== Un héritage prototypal plus conventionnel
+
+Le fait d'utiliser la propriété +\_++_++proto++\_++_+ n'est pas l'approche adéquate car cette technique n'est pas toujours bien supportée selon les navigateurs.
+
+Pour arriver à un résultat équivalent on préferera utiliser +Object.create()+ qui s'utilise de la manière suivante.
+
+```js
+// prototype
+var animal = { name: 'Grumpy', age: 3, male: true };
+var cat = Object.create(animal);
+console.log('My cat ' + cat.name + ' is ' + cat.age + ' years old.');
+```
+
+Comme auparavant on peut étendre ou surcharger certaines propriétés.
+
+``` js
+var dog = Object.create(animal, {
+  name: {value: 'Droopy'}
+});
+console.log('My dog ' + dog.name + ' is ' + dog.age + ' years old.');
+```
+
+<<<
+
+=== Factoriser l'héritage
+
+On pourrait être tenté de créer une fonction pour faciliter cela :
+
+```js
+function createAnimal(animalToInstantiate) {
+  return Object.create(animal, animalToInstantiate);
+};
+
+var dog = createAnimal({
+  name: {value: 'Droopy'}
+});
+```
+
+Mais cela pose des problèmes :
+
+- Ce n'est vraiment pas naturel à écrire.
+- Même si on dispose de nouvelles propriétés, on dépend toujours directement de +Object.prototype+ dans la chaîne de dérivation.
+
+<<<
+
+=== Les constructeurs
+
+Pour créer une véritable hiérarchie par classes on va passer par la notion de constructeurs.
+
+Un contructeur est une fonction en soit mais qui a va être invoquée avec le mot clé +new+, ce qui aura une importance particulière sur le +this+ lors de l'invocation et sur le +return+ qui renverra la référence de l'objet créé (si on ne définit pas un objet dans le +return+).
+
+```js
+function Animal(name, age, male) {
+  this.name = name;
+  this.age = age;
+  this.male = male;
+};
+
+var dog = new Animal('Droopy', 3, true);
+
+console.log('My dog ' + dog.name + ' is ' + dog.age + ' years old.');
+```
+
+<<<
+
+=== Les conventions des constructeurs
+
+```js
+function Animal(name, age, male) {
+  this.name = name;
+  this.age = age;
+  this.male = male;
+};
+
+var dog = new Animal('Droopy', 3, true);
+
+console.log('My dog ' + dog.name + ' is ' + dog.age + ' years old.');
+```
+
+WARNING: Ce n'est pas obligatoire mais la convention veut que l'on commence un constructeur par une majuscule.
+
+WARNING: En théorie vous ne devriez pas spécifier quoi que ce soit dans le return d'un constructeur.
+
+<<<
+
+=== Relation constructeur / prototype
+
+En réalité chaque objet dispose d'un constructeur avec la propriété +constructor+ qui retourne une fonction.
+
+```js
+var whatever = {};
+console.log(whatever.constructor); // function Object() { ... }
+```
+
+Chaque fonction dispose d'une propriété +prototype+ qui retourne un objet.
+
+```js
+var sum = function(a, b, c) {  return a + b + c;  };
+console.log(sum.prototype); // Object {}
+```
+
+Cela est possible car *une fonction en JavaScript est aussi un objet !*.
+
+<<<
+
+=== Hiérarchie plus fine
+
+Avec l'approche des constructeurs la hiérarchie entre les objets est beaucoup plus fine car ils ne dépendent plus directement de +Object.prototype+ mais du prototype qui est retourné par le constructeur.
+
+```js
+function Animal(name, age, male) {
+  this.name = name;
+  this.age = age;
+  this.male = male;
+};
+var dog = new Animal('Droopy', 3, true);
+dog.toString(); // [object Object]
+Animal.prototype.toString = function() {
+  console.log('I\'m a animal');
+};
+dog.toString(); // I'm a animal
+```
+
++Object.prototype+ est le prototype des objets par défaut en JavaScript, il a une incidence sur tous les objets puisqu'ils dérivent tous de lui (y compris Animal).
+
++Animal.prototype+ a une incidence sur tous les objets qui dérivent de lui.
+
+<<<
+
+=== Tout en une image
+
+image::content/img/js_poo.png[width=100%, scaledwidth=100%, align=center]
+
+<<<
+
+=== Héritage au final en ES5
+
+```js
+function Animal(name, age, male) {
+  this.name = name;
+  this.age = age;
+  this.male = male;
+};
+
+function Cat(name, age, male, color) {
+  Animal.apply(this, [name, age, male]);
+  this.color = color;
+};
+Cat.prototype = Object.create(Animal.prototype, {
+  constructor: {value: Cat}
+});
+Cat.prototype.action = function() {
+  return 'meaows';
+};
+
+var cat = new Cat('Grumpy', 3, true, 'grey');
+
+console.log('My ' + cat.color + ' cat ' + cat.name + ' ' + cat.action());
+```

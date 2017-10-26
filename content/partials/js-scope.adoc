@@ -1,0 +1,129 @@
+== Les fonctions et le "scope"
+
+<<<
+
+=== La notion de "scope"
+
+Par "scope", on définit la portée et la durée de vie des variables conditionnées par l'endroit de leur déclaration.
+
+Contrairement à d'autres langages, JavaScript n'a pas de "scope" au niveau des blocs (c'est à dire entre {}) mais a *un scope au niveau des fonctions*.
+
+```js
+var sum = function(a, b) { 
+  var baseSum = 4;
+  return baseSum + a + b; 
+};
+console.log(sum(1, 2)); // 7
+console.log(baseSum); // ERROR
+
+function substract(a, b) { 
+  if(true) {
+    var baseSubstract = 100;
+  }
+  return baseSubstract - a - b; 
+};
+
+console.log(substract(1, 2)); // 97
+console.log(baseSubstract); // ERROR
+```
+
+<<<
+
+=== Le "scope" global
+
+JavaScript dispose d'un "scope" global, il s'agit d'un +object+ disposant déjà d'un certain nombre de propriétés et de méthodes.
+
+*_Dans un navigateur_* +
+```js
+console.log(location.href); // affiche l'URL du navigateur
+console.log(setTimeout); // affiche la fonction setTimeout
+```
+
+Par défaut on est automatiquement positionné sur le "scope" global.
+
+*_Dans un navigateur_* +
+```js
+var magicNumber = 42;
+
+window.magicNumber++;
+
+console.log(magicNumber); // 43
+```
+
+<<<
+
+=== Limitation de l'utilisation du "scope" global
+
+L'isolation de variables dans des "scopes" autres que global réduit le risque de collision et optimise l'usage de la mémoire.
+
+C'est donc une très bonne pratique de ne pas gonfler le "scope" global.
+
+WARNING: On peut omettre le mot clé +var+ pour déclarer une variable, mais cette particularité fait que celle-ci aura une portée globale même si elle est déclarée dans une fonction !
+
+```js
+var sum = function(a, b) { 
+  baseSum = 4;
+  return baseSum + a + b; 
+};
+console.log(sum(1, 2)); // 7
+console.log(baseSum); // 4
+```
+
+<<<
+
+=== Imbrication de "scopes"
+
+Une fonction en plus des paramètres qui lui sont passés, peut accéder au "scope" l'ayant déclaré.
+
+```js
+var sayHref = function() {  console.log(location.href); };
+sayHref(); // affiche l'URL du navigateur
+```
+
+Ce mécanisme est vrai quel que soit le niveau d'imbrication des "scopes" (c'est à dire des fonctions), on appelle cela une "closure";
+
+```js
+var sayHelloHref = function() { 
+  var hello = 'Bonjour';
+  var sayHref = function() { 
+    console.log(hello + ' ' + location.href);
+  };
+  return sayHref;
+};
+var welcomeBrowser = sayHelloHref();
+welcomeBrowser(); // Bonjour + affiche l'URL du navigateur
+```
+
+<<<
+
+=== Définition de "closure"
+
+En JavaScript une "closure" ou fermeture (lexicale) est un objet spécial qui combine une fonction et l’environnement dans lequel elle a été créée.
+
+Le mot "closure" pourrait être expliqué par le fait que l'on a enfermé le "scope" auquelle la fonction se réfère dans la fonction elle même au moment de sa déclaration.
+
+Pour des raisons de simplicité dans la suite de ces slides je parlerai plutôt de contexte de déclaration ; mais attention il ne s'agit absolument pas d'un terme que vous retrouverez dans la littérature à ce sujet.
+
+<<<
+
+=== Module pattern
+
+Le fonctionnement des "closures" et des IIFE permettent l’exposition publique vs privée de propriétés d'un objet.
+
+En voici l'exemple avec le module pattern.
+
+```js
+var namespace = (function() {
+  var privVar = 'secret'; // propriétée privée
+  var pubVar = 'not secret'; // propriétée publique
+  var privMethod = function() { return privVar };
+  return {
+    pubVar: pubVar,
+    pubMethod: privMethod
+  };
+})();
+
+console.log(namespace.pubVar); // not secret
+console.log(namespace.pubMethod()); // secret
+console.log(namespace.privVar); // undefined
+```

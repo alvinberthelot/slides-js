@@ -1,0 +1,7 @@
+== Bilan
+
+- La portée des variables se fait via le "scope" d'une fonction.
+- La déclaration d'une fonction avec ce que cela implique sur les arguments et le contexte de déclaration (closure).
+- L'invocation d'une fonction avec ce que cela implique sur les arguments, +this+ et +return+.
+- Les types de valeur objet et fonction sont en réalité fortement liés.
+- La programmation orientée objet c'est compliqué en ES5 ... vive la syntaxe ES6.

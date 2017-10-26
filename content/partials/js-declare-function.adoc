@@ -1,0 +1,99 @@
+== Déclaration des fonctions
+
+<<<
+
+=== Définition d'une fonction
+
+*_Rappel_* +
+Les fonctions en JavaScript permettent d'organiser et de regrouper des comportements au sein de notre code afin de les réutiliser.
+
+```js
+function sayHello(name) {
+  console.log('Hello ' + name);
+};
+
+var sayGoodbye = function(name) {
+  console.log('Goodbye ' + name);
+}
+
+sayHello('Grumpy');
+
+sayGoodbye('Grumpy');
+```
+
+<<<
+
+=== Constitution d'une fonction
+
+Une fonction se constitue de la sorte .
+
+```js
+function sum(a, b, c) { 
+  return a + b + c; 
+}
+```
+
+- Un mot clef +function+.
+- Un nom (facultatif), ici +sum+.
+- Des arguments (facultatifs), ici +a+, +b+ et +c+.
+- Des instructions entre accolades (accolades obligatoires).
+- Un mot clé +return+ (facultatif) qui renvoie une valeur.
+
+<<<
+
+=== Le nom d'une fonction
+
+Une fonction sans nom est appelée une fonction anonyme. Elle ne peut être invoquée que dans des conditions particulières.
+
+Soit en étant associée à une variable.
+
+```js
+var sum = function(a, b, c) {  return a + b + c;  };
+console.log(sum(1, 2, 3)); // 6
+```
+
+Soit en étant définie comme un "callback" d'une autre fonction.
+
+```js
+setTimeout(function() { console.log('Sorry I\'m late !'); }, 4000);
+```
+
+Soit via une IIFE : Immediately-Invoked Function Expression.
+
+```js
+(function() {  console.log('Hello World immediately !'); })();
+```
+
+<<<
+
+=== Les arguments d'une fonction
+
+Une fonction peut être appelée avec un nombre d'arguments différent du nombre défini (aussi bien plus que moins).
+
+Si il y a plus d'arguments fournis, ceux en trop sont ignorés.
+
+```js
+console.log(sum(1, 2, 3, 4)); // 6
+```
+
+Si il y a moins d'arguments, ceux non définis sont +undefined+.
+
+```js
+console.log(sum(1, 2)); // NaN
+```
+
+<<<
+
+=== L'instruction d'interruption +return+
+
+Lorsque l’éxecution arrive sur une instruction +return+, on sort immédiatement de la fonction.
+
+Si une fonction ne définit pas l’instruction +return+ alors elle retourne +undefined+ par défaut.
+
+```js
+function sayHello(name) {
+  console.log('Hello ' + name);
+};
+
+console.log(sayHello('Grumpy')); // undefined
+```

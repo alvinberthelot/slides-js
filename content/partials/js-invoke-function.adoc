@@ -1,0 +1,103 @@
+== Invocation des fonctions
+
+<<<
+
+=== Déclaration Vs Invocation
+
+Pour bien comprendre les fonctions, il faut bien distinguer leur déclaration de leur invocation.
+
+```js
+// Déclaration
+function sayHello(name) {
+  console.log('Hello ' + name);
+};
+
+// Invocation
+sayHello('Grumpy');
+```
+
+TIP: Une fonction est forcément déclarée si on trouve le mot clé +function+ (en ES5 en tout cas) et forcément invoquée si elle est suivie de parenthèses +()+ mais sans le mot clé +function+.
+
+<<<
+
+=== Quizz
+
+Voyons si vous devinerez ce qui s'affiche.
+
+```js
+function hello() { 
+  console.log('Hello World !');
+}; // QUIZZ 1 ?
+
+var politeServer = {
+  connect: hello // QUIZZ 2 ?
+};
+
+politeServer.connect; // QUIZZ 3 ?
+
+function goodbye() { 
+  console.log('Hello World immediately !');
+}(); // QUIZZ 4 ?
+```
+
+<<<
+
+=== Les paramètres d'invocation
+
+Lorsqu'une fonction est invoquée, en plus des paramètres déclarés (éventuellement passés), 2 autres paramètres sont accessibles : +arguments+ et +this+.
+
++arguments+ retournant un tableau avec tous les paramètres passés lors de l'invocation.
+
++this+ retournant le contexte d'invocation de la fonction.
+
+```js
+var sum = function(a, b, c) { 
+  console.log(arguments);
+  console.log(this);
+  return a + b + c; 
+};
+```
+
+<<<
+
+=== What is +this+ ?
+
+L'initialisation de l'argument +this+ va dépendre de la façon dont la fonction est invoquée, cela se distingue en 4 cas :
+
+- method : si la fonction est définie comme une propriété d'un objet, +this+ fera référence à cet objet.
+- function : si la fonction n'est pas une propriété d'objet, +this+ fera référence au contexte global.
+- constructor : l'invocation d'une fonction avec le préfixe +new+ (constructeur, par convention nommée avec une majuscule) va induire un comportement particulier, un objet va être créé et +this+ y fera référence.
+- apply : les fonctions disposent d'une méthode +apply+, leur permettant d'être appelées en définissant +this+ (premier argument de +apply+) tout en passant les paramètres (second argument, sous forme de tableau).
+
+<<<
+
+=== Quizz
+
+Voyons si vous devinerez ce qui s'affiche.
+
+```js
+var name = 'Wonderful program';
+
+function hello() { 
+  console.log('Hello my name is ' + this.name);
+};
+
+var politeServer = {
+  name: 'localhost',
+  connect: hello
+};
+
+var Server = function() { this.name = 'aws' };
+var awsServer = new Server();
+
+console.log(hello()); // QUIZZ 1 ?
+
+console.log(politeServer.connect()); // QUIZZ 2 ?
+
+console.log(awsServer.hello()); // QUIZZ 3 ?
+
+console.log(hello(awsServer)); // QUIZZ 4 ?
+
+console.log(hello.apply(awsServer, ['cloud'])); // QUIZZ 5 ?
+
+```
