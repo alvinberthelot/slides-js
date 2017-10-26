@@ -1,5 +1,5 @@
 // VARIABLES FREQUENTLY CHANGED
-:revnumber: 1.0.0
+:revnumber: 1.0.1
 
 // ASCIIDOCTOR VARIABLES
 :author: Alvin Berthelot
@@ -17,7 +17,7 @@
 :urlRepository: https://github.com/alvinberthelot/slides-js
 
 
-= JavaScript, les functions
+= JavaScript, les fonctions
 {author}
 
 <<<
