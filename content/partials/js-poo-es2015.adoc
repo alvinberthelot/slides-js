@@ -1,0 +1,90 @@
+== POO avec ES2015
+
+<<<
+
+=== Héritage prototypal
+
+Précédemment nous avons vu comment fonctionnait l'héritage prototypal en JavaScript. Cela était rendu possible en appliquant un certains nombres de concepts, ce n'était pas toujours trivial de mettre ça en oeuvre et au mieux c'était assez verbeux.
+
+Désormais JavaScript supporte le mot clé +class+ qui va permettre de faire la même chose mais de manière beaucoup plus simple !
+
+```js
+class MyObject {
+  constructor(myProperty) {
+    this.myProperty = myProperty;
+  }
+  myFunction() {
+    return `My property is ${this.myProperty}`;
+  }
+}
+
+let anotherObject = new MyObject('great');
+console.log(anotherObject.myFunction());
+```
+
+<<<
+
+=== Utilisation de +class+
+
+L'utilisation de +class+ est plus simple, il y a tout de même des notions à connaître :
+
+- Une +class+ dispose généralement d'une fonction +constructor+ qui est la fonction permettant d'instancier un objet. Elle ne peut en avoir qu'une seule.
+- On déclare les méthodes d'une +class+ directement dans celle-ci et une méthode peut être déclarée comme statique avec le mot clé +static+.
+- Il est possible de définir des méthodes +get+ et +set+ sur une propriété pour forcer un comportement lorsque l'on travaille directement sur la propriété.
+- Contrairement à du code JavaScript classique, une classe doit obligatoirement être déclarée avant d'être utilisée.
+- L'héritage est rendu possible avec le mot clé +extends+ et on peut faire appel à une class parente avec le mot clé +super+.
+
+<<<
+
+=== Rappel, héritage au final en ES5
+
+```js
+function Animal(name, age, male) {
+  this.name = name;
+  this.age = age;
+  this.male = male;
+};
+
+function Cat(name, age, male, color) {
+  Animal.apply(this, [name, age, male]);
+  this.color = color;
+};
+Cat.prototype = Object.create(Animal.prototype, {
+  constructor: {value: Cat}
+});
+Cat.prototype.action = function() {
+  return 'meaows';
+};
+
+var cat = new Cat('Grumpy', 3, true, 'grey');
+
+console.log('My ' + cat.color + ' cat ' + cat.name + ' ' + cat.action());
+```
+
+<<<
+
+=== Héritage au final en ES6
+
+```js
+class Animal {
+  constructor(name, age, male) {
+    this.name = name;
+    this.age = age;
+    this.male = male;
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, age, male, color) {
+    super(name, age, male);
+    this.color = color;
+  }
+  action() {
+    return 'meaows';
+  }
+}
+
+var cat = new Cat('Grumpy', 3, true, 'grey');
+
+console.log(`My {cat.color} cat ${cat.name} ${cat.action()}`);
+```

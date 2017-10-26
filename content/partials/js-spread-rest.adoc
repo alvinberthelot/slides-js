@@ -1,0 +1,57 @@
+== Syntaxe de décomposition
+
+<<<
+
+=== Une syntaxe, 2 opérateurs
+
+La nouvelle syntaxe de décomposition est utilisée avec +...+ mais celle-ci peut avoir une signification différente car elle est utilisée avec 2 opérateurs :
+
+- L'opérateur "spread".
+- L'opérateur "rest".
+
+<<<
+
+=== L'opérateur _spread_
+
+La syntaxe de décomposition "spread operator" est utilisée pour déstructurer un tableau sans forcément connaître le nombre d'éléments.
+
+```js
+let ages = [5, 13, 7, 32, 21];
+let max = Math.max(...ages);
+```
+
+NOTE: Pour rappel +Math.max()+ prend une liste d'arguments et non un tableau (Cf. https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math/max[MDN]).
+
+<<<
+
+=== L'opérateur _rest_
+
+La syntaxe de décomposition "rest operator" est utilisée pour construire implicitement un tableau avec des arguments restants.
+
+```js
+function countAnimals(...args) {
+   return args.length;
+}
+countAnimals('Grumpy', 'Droopy', 'Nemo');
+```
+
+<<<
+
+=== Quizz spread Vs rest
+
+
+```js
+let [first, ...others] = ['Grumpy', 'Droopy', 'Nemo']
+
+console.log(first); // QUIZZ 1 ?
+
+console.log(others); // QUIZZ 2 ?
+
+// QUIZZ 3, spread or rest ?
+
+let animals = [...others, first];
+
+console.log(animals); // QUIZZ 4 ?
+
+// QUIZZ 5, spread or rest ?
+```

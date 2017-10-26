@@ -1,0 +1,57 @@
+// VARIABLES FREQUENTLY CHANGED
+:revnumber: 1.0.0
+
+// ASCIIDOCTOR VARIABLES
+:author: Alvin Berthelot
+:email: alvin.berthelot@webyousoon.com
+:source-highlighter: coderay
+:title-logo-image: image:content/img/js.png[width=100%, scaledwidth=25%, align=left]
+:icons: font
+:doctype: book
+:compat-mode:
+:experimental:
+:pygments-style: bw
+
+// CUSTOM VARIABLES
+:nameRepository: slides-js
+:urlRepository: https://github.com/alvinberthelot/slides-js
+
+
+= JavaScript, syntaxe ES6 (ES2015)
+{author}
+
+<<<
+include::intro-license.adoc[]
+
+<<<
+include::content/partials/js-compatibility.adoc[]
+
+<<<
+include::content/partials/js-arrow-functions.adoc[]
+
+<<<
+include::content/partials/handson/js-es2015-arrow-functions.adoc[]
+
+<<<
+include::content/partials/js-destructuring.adoc[]
+
+<<<
+include::content/partials/js-spread-rest.adoc[]
+
+<<<
+include::content/partials/handson/js-es2015-destructuring-spread-rest.adoc[]
+
+<<<
+include::content/partials/js-poo-es2015.adoc[]
+
+<<<
+include::content/partials/handson/js-es2015-poo.adoc[]
+
+<<<
+include::content/partials/js-promises.adoc[]
+
+<<<
+include::content/partials/handson/js-es2015-promises.adoc[]
+
+<<<
+include::license.adoc[]

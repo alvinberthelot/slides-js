@@ -1,0 +1,75 @@
+== Les "arrow functions"
+
+<<<
+
+=== Nouvelle syntaxe pour les fonctions
+
+Il est désormais très simple d'écrire des fonctions sans écrire les mots +function+ et +return+. Pour indiquer la déclaration d'une fonction on utilise l'opérateur +=>+ nommé "fat arrow".
+
+```js
+var sayGoodbye = function(name) {
+  console.log('Goodbye ' + name);
+};
+// ES2015 syntaxe
+var sayGoodbye = (name) => {
+  console.log('Goodbye ' + name);
+};
+```
+
+A noter que si il n'y a pas de paramètre on utilise des parenthèses vides et que si l'instruction +return+ est impliciteil n'y a pas de bloc.
+
+```js
+var sayHello = function() { return 'Hello'; };
+// ES2015 syntaxe
+var sayHello = () => 'Hello';
+```
+
+<<<
+
+=== La perte du +this+
+
+Une grande classique en JavaScript est de perdre la référence du +this+.
+
+```js
+var runningMan = {
+  countRunning: 0,
+  run: function() {
+    this.countRunning++;
+    console.log(this.countRunning);
+    setTimeout(function() {
+      console.log('Run ' + this.countRunning + ' finished');
+    }, this.countRunning * 1000);
+  }
+};
+// workaround
+var runningMan = {
+  countRunning: 0,
+  run: function() {
+    this.countRunning++;
+    console.log(this.countRunning);
+    var that = this;
+    setTimeout(function() {
+      console.log('Run ' + that.countRunning + ' finished');
+    }, this.countRunning * 1000);
+  }
+};
+```
+
+<<<
+
+=== Le "bind" du +this+
+
+Les "fat arrow" réalisent le "bind" de manière automatique.
+
+```js
+var runningMan = {
+  countRunning: 0,
+  run: function() {
+    this.countRunning++;
+    console.log(this.countRunning);
+    setTimeout(() => {
+      console.log('Run ' + this.countRunning + ' finished');
+    }, this.countRunning * 1000);
+  }
+};
+```

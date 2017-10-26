@@ -1,0 +1,40 @@
+== Affectations déstructurées
+
+<<<
+
+=== Affectations déstructurées (objets)
+
+Il s'agit d'une nouvelle syntaxe pour affecter des variables via des objets;
+
+```js
+let cat = { name: 'Grumpy', age: 3, male: true };
+// syntaxe classique
+let famousCat = cat.name;
+// syntaxe déstructurée
+let { name: famousCat } = cat;
+```
+
+WARNING: L'ordre des clés et des valeurs est inversée.
+
+NOTE: Si la variable à déclarer a le même nom que la propriété à lire elle peut être omise.
+
+```js
+let { name } = cat;
+console.log(name); // Grumpy
+```
+
+<<<
+
+=== Affectations déstructurées (tableaux)
+
+Cette nouvelle syntaxe s'applique également aux tableaux.
+
+```js
+let animals = ['Grumpy', 'Droopy', 'Nemo'];
+
+// syntaxe classique
+let famousDog = animals[1];
+
+// syntaxe déstructurée
+let [, famousDog,] = animals;
+```

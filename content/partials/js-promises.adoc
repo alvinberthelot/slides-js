@@ -1,0 +1,130 @@
+== Asynchronisme
+
+<<<
+
+=== Les callbacks
+
+En JavaScript il est tout à fait possible de *passer une fonction en paramètre  d'une autre fonction* et/ou de retourner une fonction dans une fonction.
+
+```js
+setTimeout(
+  // premier paramètre
+  function() { console.log('Sorry I\'m late !'); },
+  // deuxième paramètre
+  4000
+);
+```
+
+On appelle callback un appel à une fonction par une autre fonction à laquelle il a été passé en paramètre d'appel une référence à la première.
+
+Il s'agit juste d'une convention de nommage sur l'appel de fonctions car rien de particulier n'est effectué.
+
+<<<
+
+=== Asynchronisme en JavaScript
+
+Les callbacks sont très utilisés pour les traitements asynchrones et pour déclencher un traitement sur la réception d'un événement.
+
+```js
+// Asynchronous with jQuery style
+let showAnimals = function() {
+  $.get('/api/animals', function(response) {
+    response.map(animal => console.log(animal));
+  });
+}
+
+// Trigger event in Vanilla style
+let myButton = document.getElementById('buttonSearch');
+myButton.addEventListener('click', showAnimals);
+```
+
+WARNING: On associe un callback nécessairement à un traitement asynchrone, ce n'est pas forcément vrai.
+
+<<<
+
+=== Le callback hell
+
+Si ce mode de fonctionnement est puissant, il peut aussi vite devenir problématique pour la lisibilité et maintenabilité du code.
+
+```js
+async1(function(){
+  async2(function(){
+    async3(function(){
+      async4(function(){
+        ...
+      });
+    });
+  });
+});
+```
+
+On appelle cela le callback hell, une solution avec ES2015 est d'utiliser les +promises+.
+
+<<<
+
+=== Les +promises+
+
+Les +promises+ (promesses en français) permettent de simplifier la programmation asynchrone en affichant le code "à plat".
+
+```js
+let task1 = async1();
+let task2 = task1.then(async2);
+let task3 = task2.then(async3);
+let task4 = task3.then(async4);
+...
+```
+
+Il est même possible de chaîner les +promises+ pour gagner encore en lisibilité.
+
+```js
+async1()
+  .then(async2)
+  .then(async3)
+  .then(async4)
+  ...
+```
+
+<<<
+
+=== Fonctionnement d'une "promise"
+
+Une "promise" est un objet qui possède une méthode +then+ prenant 2 paramètres, un callback de succès et un callback d'erreur. Les callbacks sont déterminés en fonction des 3 états d'une "promise" :
+
+- _pending_ lorsque la promise est en cours d'exécution.
+
+- _fulfilled_ lorsque la promise s'est exécutée avec succés, on appelle alors le callback de succès.
+
+- _rejected_ lorsque la promise n'a pas pu s'exécuter correctement, on appelle alors le callback d'erreur.
+
+```js
+async1()
+  .then(async2, console.error)
+  .then(async3, console.error)
+  .then(async4, console.error)
+  ...
+```
+
+<<<
+
+=== Créer sa +promise+
+
+Si dans de nombreux cas on utilisera des "promises" déjà fournies dans des librairies, rien ne vous empêche de créer la votre avec la +class Promise+.
+
+```js
+let stupidPromise = new Promise(function (resolve, reject) {
+  if(true) {
+    resolve('OF COURSE');
+  } else {
+    reject('WTF !!!');
+  }
+});
+
+stupidPromise.then(console.log, console.log);
+```
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+== Utiliser ES6
+
+<<<
+
+=== Compatibilité des navigateurs
+
+ES6 (ou ES2015) est désormais un standard, pour autant cela ne veut pas dire qu'il est disponible dans les anciens navigateurs.
+
+Cependant il est fortement conseillé de l'utiliser dès à présent pour plusieurs raisons :
+
+- Bon nombre d'implémentation de fonctionnalités ont été réalisées avant la sortie officielle.
+- Il existe de nombreux polyfills pour palier les manques des navigateurs les plus anciens.
+- Les nouvelles fonctionnalités de la nouvelle syntaxe sont principalement du sucre syntaxique, c'est à dire que dans le fond le fonctionnement est resté le même mais avec une syntaxe beaucoup plus facile.
+
+<<<
+
+=== Les transpileurs
+
+L’intérêt des transpileurs est de pouvoir écrire du code JavaScript selon les dernières syntaxes tout en assurant la compatibilité avec les anciennes.
+
+Cela permet d'utiliser tout de suite la syntaxe plus légère, élégante et robuste puisqu'elle est en accord avec les standards actuels ou futurs.
+
+Les transpileurs les plus connus :
+
+- https://babeljs.io/[Babel]
+- https://www.typescriptlang.org/[TypeScript]
+
+<<<
+
+== La portée des variables
+
+<<<
+
+=== +let+
+
+*_Rappel_* +
+Contrairement à d'autres langages, JavaScript n'a pas de "scope" au niveau des blocs (c'est à dire entre {}) mais a *un scope au niveau des fonctions*.
+
+La portée des variables par fonction et non par bloc induit en erreur.
+
+Il sera possible de définir une portée par bloc (plus limitée) sur les variables, il suffit de remplacer la déclaration +var+ par +let+.
+
+```js
+function substract(a, b) { 
+  if(true) {
+    let baseSubstract = 100;
+  }
+  return baseSubstract - a - b; 
+};
+
+console.log(substract(1, 2)); // ERROR
+```
+
+<<<
+
+=== +const+
+
+Il est possible de définir des constantes dans le code, il suffit de remplacer la déclaration +var+ par +const+.
+
+Une nouvelle valorisation n'est pas possible.
+
+```js
+const magicNumber = 42;
+magicNumber++; // ERROR
+```
+
+L’initialisation d’une constante est possible pour un objet, mais elle ne garantie pas ses propriétés et ses méthodes.
+
+```js
+const animal = {
+  name: 'Grumpy',
+  age: 3,
+  male: true
+};
+animal.name = 'Droopy';
+console.log(animal.name); // Droopy
+```
+
+<<<
+
+== Les template de string
+
+<<<
+
+=== Nouvelle déclaration
+
+Les +string+ peuvent être déclarées avec des "backticks" +`+ au lieu des apostrophes ou guillemets habituels.
+
+Cela a 2 avantages :
+
+- On peut utiliser des variables avec +${_variable_}+ sans utiliser l'opérateur de concaténation +++.
+- On peut aller à la ligne.
+
+```js
+var cat = {
+  name: 'Grumpy'
+};
+console.log(`
+Hello ${cat.name}
+Would you like a cup of tea ?
+`);
+```
