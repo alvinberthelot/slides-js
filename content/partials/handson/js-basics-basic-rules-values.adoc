@@ -1,0 +1,13 @@
+image::content/img/programming_meme.png[width=100%, scaledwidth=25%, align=center]
+
+=== Exercices
+
+On va s'appuyer sur la plateforme https://nodeschool.io/[NodeSchool.io], pour cela vous devez https://github.com/workshopper/javascripting[installer le TP "javascripting"].
+
+=> INTRODUCTION +
+=> VARIABLES +
+=> STRINGS +
+=> STRINGS LENGTH +
+=> NUMBERS +
+=> ROUNDING NUMBERS +
+=> NUMBERS TO STRING +

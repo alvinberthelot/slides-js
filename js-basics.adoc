@@ -24,4 +24,25 @@
 include::intro-license.adoc[]
 
 <<<
+include::content/partials/js-history.adoc[]
+
+<<<
+include::content/partials/js-basic-rules.adoc[]
+
+<<<
+include::content/partials/js-values.adoc[]
+
+<<<
+include::content/partials/handson/js-basics-basic-rules-values.adoc[]
+
+<<<
+include::content/partials/js-instructions.adoc[]
+
+<<<
+include::content/partials/js-operators.adoc[]
+
+<<<
+include::content/partials/handson/js-basics-instructions-operators.adoc[]
+
+<<<
 include::license.adoc[]

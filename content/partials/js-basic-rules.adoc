@@ -1,0 +1,32 @@
+== Les règles élémentaires
+
+<<<
+
+=== Les espaces et commentaires
+
+L'interprétation du code source ne souffrira pas de la présence des caractères “espace”. Utilisez les donc pour formater votre code
+JavaScript.
+
+Pour les commentaires JavaScript propose deux possibilités, commenter un bloc de lignes +/* */+ ou ligne par ligne +//+.
+
+```js
+/*
+console.log('Hello World !');
+console.log('Bye Bye World !');
+*/
+
+// console.log('Hello World !');
+// console.log('Bye Bye World !');
+```
+WARNING: En bloc cela peut être fragilisé par le contenu commenté (s'il contient '*/' par exemple).
+
+<<<
+
+=== Les règles de nommage
+
+Les règles de nommage en JavaScript sont assez souples, on peut utiliser les caractères suivants : +A-Za-z0-9_+
+
+Par contre certains mots sont réservés au langage :
++abstract boolean break byte case catch char class const continue debugger default delete do double else enum export extends false final finally float for function goto if implements import in instanceof int interface long native new null package private protected public return short static super switch synchronized this throw throws transient true try typeof var volatile void while with+
+
+Pour le nommage, le mieux est encore d'appliquer une convention au sein de l'équipe (http://javascript.crockford.com/code.html[Convention recommandée par Douglas Crockford]).

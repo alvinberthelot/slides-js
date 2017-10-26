@@ -1,0 +1,100 @@
+== Les instructions
+
+<<<
+
+=== Les différents types d'instructions
+
+JavaScript dispose de différents types d'instructions :
+
+- L'instruction déclarative : +var+
+- Les instructions conditionnelles : +if+, +switch+
+- Les instructions itératives : +while+, +for+, +do+
+- Les instructions d'interruption : +break+, +return+, +throw+
+
+<<<
+
+=== L'instruction déclarative +var+
+
+L’instruction déclarative +var+ permet de conserver l’état d’une valeur .
+
+```js
+var message = 'Hello World !';
+```
+
+<<<
+
+=== L'instruction conditionnelle +if+
+
+L’instruction conditionnelle +if+ (et son pendant +else+) permet d'orienter les instructions d'un programme selon l'évaluation d'une condition.
+
+```js
+if(score > 10)
+  message = 'You win';
+else
+  message = 'Try again';
+
+if(score > 10) {
+  message = 'You won';
+  newtLevel = true;
+}
+```
+
+<<<
+
+=== L'instruction conditionnelle +switch+
+
+L’instruction conditionnelle +switch+ évaluer une expression et lui associe les instructions correspondantes.
+
+```js
+switch (background) {
+  case 'white':
+    color = '#FFFFFF';
+    break;
+  case 'blue':
+    color = '#0000FF';
+    break;
+  case 'red':
+    color = '#FF0000';
+    break;
+  default:
+    color = '#000000';
+}
+```
+
+<<<
+
+=== Les instructions itératives +while+, +for+ et +do+
+
+Les instructions itératives permettent de répéter les instructions selon certaines conditions.
+
+```js
+while(ifPresent) {
+  console.log('Hello, I\'m here');
+}
+
+for (var ite = 0; ite < names.length; ite++) { 
+  console.log('Hello ' + names[i]);
+}
+
+do {
+  console.log('Hello, I\'m here');
+} while (ifPresent);
+```
+
+<<<
+
+=== Les instructions d'interruption +break+, +return+ et +throw+
+
+Les instructions d'interruption permettent d'interrompre l'exécution d'un programme selon certaines conditions.
+
+- +break+ : terminer l'exécution d'une boucle ou d'une instruction +switch+.
+- +return+ : terminer l'exécution d'une fonction et définir la valeur à retourner.
+- +throw+ : lever une exception et terminer l'exécution de la fonction courante pour remonter la file d'appels jusqu'au premier bloc +catch+.
+
+```js
+var getWelcomeCustomerMessage = function(customer) {
+  if(!customer.name)
+    throw new ExceptionCustomer('Customer has no name.');
+  return 'Welcome in our store dear ' + customer.name;
+}
+```

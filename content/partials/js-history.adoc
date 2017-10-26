@@ -1,0 +1,72 @@
+== L'histoire de JavaScript
+
+<<<
+
+=== Création du langage
+
+- 1995 : Netscape crée JavaScript en partenariat avec Sun.
+- 1996 : Microsoft implémente le même langage sous le nom de JScript.
+- 1997 : Netscape standardise JavaScript sous le nom d’ECMAScript (Java étant une marque déposée) ayant comme standard ECMA-262.
+
+Les noms JavaScript et ECMAScript cohabitent encore, ECMAScript représentant plus le langage de programmation, tandis que JavaScript l’implémentation de celui-ci pour un navigateur Web.
+
+<<<
+
+=== Évolution du langage
+
+- 2007 : ECMAScript 4 (ES4), version aujourd'hui abandonnée.
+- 2009 : ECMAScript 5 (ES5), version tendant à disparaître mais encore grandement utilisée.
+- 2015 : ECMAScript 6 (ES6 ou ES2015), version de référence aujourd'hui pour développer mais attention à la compatibilité navigateur.
+- 2016 : ECMAScript 7 (ES7 ou ES2016), dernière version, extrème prudence sur la compatibilité.
+
+Le processus de normalisation est désormais axé sur une version par an.
+
+<<<
+
+=== Normalisation Vs Implémentation
+
+image::content/img/web_browsers.jpg[width=100%, scaledwidth=75%, align=center]
+
+<<<
+
+=== "Can I Use" à la rescousse
+
+Le site http://www.caniuse.com[caniuse.com] est votre boussole pour vous y retrouver dans ce que vous pouvez faire ou pas.
+
+image::content/img/can_i_use.png[width=100%, scaledwidth=75%, align=center]
+
+<<<
+
+=== Compatibilité du langage
+
+Pour assurer la compatibilité du langage, vous devez prendre en considération :
+
+- Les différentes versions d'ECMAScript.
+- Les différentes implémentations des navigateurs et leurs versions.
+- Les navigateurs réellement utilisés par vos utilisateurs.
+
+<<<
+
+=== JavaScript, les moments forts
+
+Si la normalisation du langage a été longue par moment, les cas d'utilisation de JavaScript eux n'ont cessé d'évoluer :
+
+- 1995 : HTML dynamique
+- 1999 : XMLHttpRequest
+- 2001 : JSON
+- 2005/2006 : Ajax & jQuery
+- 2008/2009 : V8 & Node.js
+- 2010 : Applications SPA
+
+<<<
+
+=== JavaScript, le vent en poupe
+
+JavaScript est avant tout le langage de programmation universel des navigateurs Web, ce qui lui confère un positionnement stratégique.
+
+Mais ces dernières années l'ont fait apparaître sur de nouvelles plateformes lui permettant d'être présent partout :
+
+- Node.js
+- Cordova/PhoneGap
+- Electron
+- Tessel

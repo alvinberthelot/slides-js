@@ -1,0 +1,158 @@
+== Les valeurs
+
+<<<
+
+=== Les types de valeur
+
+JavaScript définit 6 types de valeur :
+
+- Les chaînes de caractères : +string+
+- Les nombres : +number+
+- Les booléens : +boolean+
+- Les objets : +object+
+- Les fonctions : +function+
+- Les valeurs indéfinies : +undefined+
+
+
+<<<
+
+=== Les chaînes de caractères
+
+Une chaîne de caractères est une séquence de caractères encadrés par des apostrophes +'+ ou des guillemets +"+.
+
+```js
+var message = 'Hello World !';
+```
+
+L'objet “wrapper” +String+ apporte un ensemble de méthodes et propriétés pour manipuler les chaînes (Cf. https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String[MDN]).
+
+```js
+ "Hello World !".length; // 13
+```
+WARNING: On peut appliquer des opérateurs sur les chaînes de caractères mais il faut se rappeler qu'elles sont immuables.
+
+
+<<<
+
+=== Les nombres
+
+JavaScript représente TOUS les nombres sous une forme unique : un nombre flottant sur 64 bits. Donc Pas de format "entier" spécifiquement défini mais cela n’empêche pas de travailler avec une précision garantie .
+
+```js
+var sum = 40 + 2 // retourne 42
+```
+
+WARNING: Pour les flottants la précision n'est pas garantie.
+```js
+1.1 + 0.8 === 1.9 // false 
+1.2 + 0.7 === 1.9 // true
+```
+
+Idem un objet "wrapper" +Number+ apporte un ensemble de méthodes et propriétés pour manipuler les nombres (Cf. https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number[MDN]).
+
+
+<<<
+
+=== Les booléens
+
+JavaScript représente également des booléens avec +false+ et +true+, mais il connaît également des règles particulières pour d'autres valeurs :
+
+Ce qui est faux : +false+, +null+, +''+, +0+, +NaN+, +undefined+.
+
+Ce qui est vrai : tout le reste.
+
+WARNING: Si on y ajoute les conversions de type, cela peut devenir franchement déroutant.
+```js
+"0" == false // true
+"0" === false // false
+```
+
+<<<
+
+=== Les objets
+
+Les objets en JavaScript sont des ensembles de propriétés, elles-mêmes définies comme des paires clé/valeur où la clé est une chaîne de caractère et la valeur, toute valeur possible en JavaScript.
+
+```js
+var cat = {
+  "name": 'Grumpy',
+  "age": 3,
+  "male": true,
+  "saySomething": function() {
+    console.log('Not happy');
+  }
+};
+```
+
+NOTE: Les objets sont bien plus complexes que cela, on y reviendra plus tard.
+
+
+<<<
+
+=== Les fonctions
+
+Les fonctions en JavaScript permettent d'organiser et de regrouper des comportements au sein de notre code afin de les réutiliser.
+
+Vous pourrez trouver deux formes de syntaxes :
+
+```js
+function sayHello(name) {
+  console.log('Hello ' + name);
+};
+
+var sayGoodbye = function(name) {
+  console.log('Goodbye ' + name);
+};
+
+sayHello('Grumpy');
+sayGoodbye('Grumpy');
+```
+
+NOTE: Les fonctions sont bien plus complexes que cela, on y reviendra plus tard.
+
+<<<
+
+=== La valeur indéfinie
+
+JavaScript permet d'indiquer qu'une valeur est indéfinie avec +undefined+.
+
+WARNING: La valeur +undefined+ n'a pas la même signification que +null+, dans le premier cas il s'agit d'un type de valeur en soit dans le deuxième cas une affectation de valeur pour un type de valeur +object+.
+
+```js
+undefined == null // true
+undefined === null // false
+```
+
+<<<
+
+=== L'opérateur +typeof+
+
+JavaScript permet de connaître le type d'une valeur avec l'opérateur +typeof+ en retournant une chaîne de caractères.
+
+```js
+typeof('Hello World !'); // "string"
+typeof(42); // "number"
+typeof(false); // "boolean"
+typeof({}); // "object"
+typeof(function(){}); // "function"
+typeof(undefined); // "undefined"
+
+// LE piège
+typeof(null); // "object"
+```
+
+<<<
+
+=== Les tableaux
+
+Et les tableaux dans tout ça ? JavaScript permet bien évidemment d'utiliser des tableaux, ceux-ci sont définis comme des types +object+, pouvant contenir eux mêmes n'importe quel type de valeur.
+
+```js
+var meltingTypes = ['Hello World !', 42, function() {console.log('FUNCTION !')}];
+
+meltingTypes[1]; // 42
+
+typeof(meltingTypes); // "object"
+typeof(meltingTypes[0]); // "string"
+```
+S'agissant d'un objet, ils disposent de nombreuses propriétés et méthodes permettant de les manipuler (Cf. https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array[MDN]).

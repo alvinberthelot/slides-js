@@ -1,0 +1,72 @@
+== Les opérateurs
+
+<<<
+
+=== Les opérateurs d'affectation
+
+JavaScript dispose de plusieurs opérateurs d'affectation (Cf. https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs[MDN]).
+
+Néanmoins le plus courremment utilisé est +=+.
+
+```js
+var magicNumber = 42;
+```
+
+TIP: Pour des affectations par défaut on utilise l'opérateur binaire +||+.
+
+```js
+var target = /*w3c*/ e.target || /*IE*/ e.srcElement;
+```
+
+<<<
+
+=== Les opérateurs de comparaison
+
+JavaScript dispose de plusieurs opérateurs de comparaison (Cf. https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs[MDN]).
+
+Voici les principaux :
+
+- +==+ : égalité, +===+ : égalité stricte, +!=+ : inégalité et +!==+ : inégalité stricte.
+- +>+ : supériorité stricte et +>=+ : supériorité ou égalité.
+- +<+ : infériorité stricte et +\<=+ : infériorité ou égalité.
+
+```js
+console.log('42' == 42); // true
+console.log('42' === 42); // false
+```
+
+TIP: L'égalité stricte +===+ et l'inégalité stricte +!==+ sont fortements conseillées pour s'éviter bien des mauvaises surprises.
+
+<<<
+
+=== Les opérateurs arithmétiques
+
+JavaScript dispose de plusieurs opérateurs arithmétques (Cf. https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs[MDN]).
+
+Voici les principaux :
+
+- +*+ : multiplier
+- +/+ : diviser
+- +%+ : modulo
+- + : additionner ou concaténer
+- +-+ : soustraire ou négation
+
+
+```js
+console.log('Magic number is ' + 6 * 7);
+```
+
+<<<
+
+=== Les opérateurs logiques
+
+JavaScript dispose des opérateurs logiques classqiues (Cf. https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Expressions_et_Op%C3%A9rateurs[MDN]).
+
+- +&&+ : ET logique
+- +||+ : OU logique
+- +!+ : NON logique
+
+
+```js
+console.log('42' == 42 && !('42' === 42)); // true
+```
