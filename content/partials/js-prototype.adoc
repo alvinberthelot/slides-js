@@ -1,0 +1,136 @@
+<<<
+
+== La notion de prototype
+
+<<<
+
+=== Héritage prototypal
+
+En JavaScript, un objet peut être "dérivé"" d'un autre avec la propriété +\_++_++proto++\_++_+. Ce dernier est alors considéré comme son prototype.
+
+```js
+// prototype
+var animal = {
+  "name": 'Grumpy',
+  "age": 3,
+  "male": true
+};
+
+var cat = {};
+cat.__proto__ = animal;
+
+console.log('My cat ' + cat.name + ' is ' + cat.age + ' years old.');
+```
+
+<<<
+
+=== Chaîne de dérivation
+
+Le lien entre l'objet dérivé et son prototype sert pour l'accès aux propriétés.
+
+Si une propriété demandée n'existe pas dans l'objet dérivé, elle est cherchée dans le prototype.
+```js
+// prototype
+var animal = {
+  "name": 'Grumpy',
+  "age": 3,
+  "male": true
+};
+
+var cat = {
+  saySomething: function() {
+    return 'Not happy';
+  }
+};
+cat.__proto__ = animal;
+
+console.log('My cat ' + cat.name + ' says ' + cat.saySomething());
+```
+
+<<<
+
+=== Héritage dynamique
+
+La relation est dynamique (mais unilatérale), si à posteriori le prototype reçoit une nouvelle propriété, le dérivé l'expose aussi.
+
+```js
+// prototype
+var animal = {
+  "name": 'Grumpy'
+};
+
+var cat = {};
+cat.__proto__ = animal;
+
+animal.age = 3;
+
+console.log('My cat ' + cat.name + ' is ' + cat.age + ' years old.');
+```
+
+<<<
+
+=== Le premier prototype
+
+Par défaut, les objets ont comme prototype un objet pré-défini par JavaScript +Object.prototype+, c'est également vrai pour les objets littéraux.
+
+```js
+var cat = {
+  "name": 'Grumpy'
+};
+
+cat.hasOwnProperty('name');
+```
+
+<<<
+
+=== Lister les propriétés
+
+Un objet étant une collection de propriétés, elles peuvent être parcourues via l'instruction +for in+.
+
+```js
+// prototype
+var animal = {
+  "name": 'Grumpy',
+  "age": 3,
+  "male": true
+};
+
+var cat = {
+  saySomething: function() {
+    return 'Not happy';
+  }
+};
+cat.__proto__ = animal;
+
+var property;
+for (property in cat) {
+  console.log(property + ': ' + cat[property]);
+}
+```
+
+<<<
+
+=== Suppression d'une propriété
+
+Une propriété peut être supprimée avec l'opérateur +delete+.
+
+La suppression n'affecte pas le prototype.
+
+```js
+// prototype
+var animal = {
+  "name": 'Grumpy',
+  "age": 3,
+  "male": true
+};
+
+var cat = {
+  age: 6
+};
+cat.__proto__ = animal;
+
+console.log(cat.age); // 6
+
+delete cat.age;
+console.log(cat.age); // 3
+```

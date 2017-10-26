@@ -1,0 +1,82 @@
+<<<
+
+== Les objets littéraux
+
+<<<
+
+=== Définition d'un objet littéral
+
+En JavaScript, un objet littéral est une façon concise de définir un objet.
+
+*_Rappel_* +
+Les objets en JavaScript sont des ensembles de propriétés, elles-mêmes définies comme des paires clé/valeur où la clé est une chaîne de caractère et la valeur, toute valeur possible en JavaScript.
+
+```js
+var cat = {
+  "name": 'Grumpy',
+  "age": 3,
+  "male": true,
+  "saySomething": function() {
+    console.log('Not happy');
+  }
+};
+```
+
+<<<
+
+=== Accès aux propriétés (en lecture)
+
+Il existe 2 façons pour accéder à la propriété d'un objet.
+
+```js
+var cat = {
+  "name": 'Grumpy',
+  "age": 3
+};
+```
+
+Avec la notation de type "point" et avec la notation de type "tableau".
+
+```js
+console.log('My cat ' + cat.name + ' is ' + cat['age'] + ' years old.');
+```
+
+TIP: La notation "point" est plus lisible mais statique, alors que la notation "tableau" est dynamique.
+
+<<<
+
+=== Accès aux propriétés (en écriture)
+
+Les notations de type "point" et "tableau" permettent également d'assigner des valeurs.
+
+```js
+cat.name = 'Garfield';
+cat['age'] = 6;
+```
+
+WARNING: L'accès à une propriété inexistante retournera +undefined+.
+
+Mais si la propriété est valorisée alors elle est automatiquement ajoutée à l'objet.
+
+```js
+console.log(cat.isDomestic); // undefined
+cat.isDomestic = true;
+console.log(cat.isDomestic); // true
+```
+
+<<<
+
+=== Référence Vs valeur
+
+Un objet est toujours retourné par référence et non pas copié/cloné.
+
+Cela signifie qu'une modification d'un état d'un objet dans une fonction sera aussi effective en dehors de la fonction (effets de bord).
+
+```js
+var sayMeaow = function(cat) {
+  ...
+  cat.age ++;
+};
+```
+
+WARNING: Cette façon d'assigner une nouvelle valeur est très dangereuse car elle génère des effets de bord.

@@ -2,9 +2,10 @@
 
 Contenus textuels (et support diapositives PDF) pour apprendre la programmation JavaScript.
 
-[![Fichier PDF](https://github.com/alvinberthelot/slides-js/blob/master/slides-js-basics.png)](https://github.com/alvinberthelot/slides-js/blob/master/js-basics.pdf)
+L'apprentissage est découpé en plusieurs sections qu'il convient de parcourir de préférence dans cet ordre :
 
-[Lien du fichier](https://github.com/alvinberthelot/slides-js/blob/master/js-basics.pdf)
+1. JavaScript, les notions basiques ([Fichier js-basics-v1.0.0.pdf](https://github.com/alvinberthelot/slides-js/blob/master/js-basics-v1.0.0.pdf))
+2. JavaScript, les objets ([Fichier js-objects-v1.0.0.pdf](https://github.com/alvinberthelot/slides-js/blob/master/js-objects-v1.0.0.pdf))
 
 
 ## Licence
