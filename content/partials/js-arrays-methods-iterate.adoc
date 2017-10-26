@@ -1,0 +1,17 @@
+=== Méthodes itératives
+
+Les tableaux disposent d'un jeu de méthodes pour itérer sur ses éléments et les transformer, voici les plus intéressantes :
+
+- +map()+ : applique une transformation sur chaque élément.
+- +reduce()+ : applique une fonction sur un accumulateur et sur chaque élément.
+- +filter()+ : filtre les éléments d'un tableau selon un prédicat.
+- +forEach()+ : appelle une fonction sur chaque élément.
+
+```js
+
+var animals = ['Grumpy', 'Droopy', 'Poppy'];
+animals.forEach(function(animal) {
+  console.log(animal);
+});
+
+```

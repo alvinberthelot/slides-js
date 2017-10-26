@@ -1,0 +1,17 @@
+=== Méthodes mutateurs
+
+Les tableaux disposent d'un jeu de méthodes pour manipuler son contenu, voici les plus intéressantes :
+
+- +push()+ : ajoute un élément au tableau (et renvoie sa nouvelle longueur).
+- +shift()+ : supprime et renvoie le premier élément d’un tableau.
+- +sort()+ : trie le contenu d’un tableau.
+
+```js
+
+var animals = ['Grumpy', 'Droopy', 'Nemo'];
+var cat = animals.shift();
+console.log(animals); // ['Droopy', 'Nemo']
+
+```
+
+WARNING: Ces méthodes modifient l'état du tableau.

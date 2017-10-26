@@ -1,0 +1,42 @@
+== Les tableaux
+
+<<<
+
+=== Définition d'un tableau
+
+*_Rappel_* +
+En JavaScript, un tableau n'est pas un type de valeur en soit.
+
+Même si il s'agit d'un objet, la déclaration courante s'effectuera avec une notation concise ("array litteral") avec des +[]+.
+
+```js
+var myAnimals = ['Grumpy', 'Droopy'];
+console.log(myAnimals[1]); // Droopy
+```
+
+NOTE: L'index d'un tableau commence à 0.
+
+NOTE: Un tableau est dynamique, il n'est donc pas nécessaire de spécifier le nombre d'éléments.
+
+<<<
+
+=== Le contenu des tableaux
+
+Les tableaux sont des objets particuliers héritant de +Array.prototype+ et donc disposant de propriétés et méthodes spécifiques.
+
+*_Rappel_* +
+Les objets en JavaScript sont des ensembles de propriétés, elles-mêmes définies comme des paires clé/valeur où la clé est une chaîne de caractère et la valeur, toute valeur possible en JavaScript.
+
+Il est donc tout à fait possible qu'un tableau contienne des fonctions.
+
+```js
+var helloAnimals = [
+  function() {
+    console.log('Hello Grumpy');
+  },
+  function() {
+    console.log('Hello Droopy');
+  }
+];
+helloAnimals[0](); // Hello Grumpy
+```

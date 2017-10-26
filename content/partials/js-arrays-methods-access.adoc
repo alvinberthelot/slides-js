@@ -1,0 +1,15 @@
+=== Méthodes accesseurs
+
+Les tableaux disposent d'un jeu de méthodes pour retourner une représentation de son contenu, voici les plus intéressantes :
+
+- +indexOf()+ : retourne le premier index d'un élément.
+- +includes()+ : détermine si élément est présent.
+- +concat()+ : concaténe des tableaux.
+- +join()+ : créée une chaîne de caractères à partir d’un tableau.
+- +slice()+ : créée une copie d’une portion d’un tableau.
+
+```js
+var animals = ['Grumpy', 'Droopy', 'Nemo'];
+var index = animals.indexOf('Nemo');
+console.log(index); // 2
+```

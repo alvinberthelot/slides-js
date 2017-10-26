@@ -7,6 +7,7 @@ L'apprentissage est découpé en plusieurs sections qu'il convient de parcourir 
 1. JavaScript, les notions basiques ([Fichier js-basics-v1.0.0.pdf](https://github.com/alvinberthelot/slides-js/blob/master/js-basics-v1.0.0.pdf))
 2. JavaScript, les objets ([Fichier js-objects-v1.0.0.pdf](https://github.com/alvinberthelot/slides-js/blob/master/js-objects-v1.0.0.pdf))
 3. JavaScript, les functions ([Fichier js-functions-v1.0.0.pdf](https://github.com/alvinberthelot/slides-js/blob/master/js-functions-v1.0.0.pdf))
+4. JavaScript, les tableaux ([Fichier js-arrays-v1.0.0.pdf](https://github.com/alvinberthelot/slides-js/blob/master/js-arrays-v1.0.0.pdf))
 
 
 ## Licence

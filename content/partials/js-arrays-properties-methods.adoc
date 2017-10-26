@@ -1,0 +1,33 @@
+== Les propriétés et méthodes
+
+<<<
+
+=== La propriété +length+
+
+Contrairement aux autres langages Il ne s’agit pas de la limite supérieure. La propriété +length+ retourne la valeur du plus grand positionnement +1 au sein du tableau.
+
+```js
+var animals = [];
+
+console.log(animals.length); // 0
+
+animals[41] = 'Grumpy';
+console.log(animals.length); // 42
+```
+
+La propriété length peut être écrasée. La spécifier peut tronquer le tableau si la nouvelle valeur est inférieure à la valeur courante.
+
+```js
+var animals = ['Grumpy', 'Droopy', 'Nemo'];
+animals.length = 2;
+console.log(animals); // ['Grumpy', 'Droopy']
+```
+
+<<<
+include::js-arrays-methods-mutate.adoc[]
+
+<<<
+include::js-arrays-methods-access.adoc[]
+
+<<<
+include::js-arrays-methods-iterate.adoc[]

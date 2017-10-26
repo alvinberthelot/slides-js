@@ -1,0 +1,34 @@
+// VARIABLES FREQUENTLY CHANGED
+:revnumber: 1.0.0
+
+// ASCIIDOCTOR VARIABLES
+:author: Alvin Berthelot
+:email: alvin.berthelot@webyousoon.com
+:source-highlighter: coderay
+:title-logo-image: image:content/img/js.png[width=100%, scaledwidth=25%, align=left]
+:icons: font
+:doctype: book
+:compat-mode:
+:experimental:
+:pygments-style: bw
+
+// CUSTOM VARIABLES
+:nameRepository: slides-js
+:urlRepository: https://github.com/alvinberthelot/slides-js
+
+
+= JavaScript, les tableaux
+{author}
+
+<<<
+include::intro-license.adoc[]
+
+<<<
+include::content/partials/js-arrays-basics.adoc[]
+
+<<<
+include::content/partials/js-arrays-properties-methods.adoc[]
+
+<<<
+include::license.adoc[]
+
